@@ -6,6 +6,7 @@
 #ifndef TEMPLATE_H
 #define TEMPLATE_H
 
+#include "Global"
 #include <QString>
 #include <QRegExp>
 #include <QIODevice>
@@ -86,7 +87,7 @@
  @see TemplateCache
 */
 
-class Template : public QString {
+class QWEBSERVER_EXPORT Template : public QString {
 public:
 
     /**

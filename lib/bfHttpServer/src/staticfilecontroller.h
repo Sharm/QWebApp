@@ -6,6 +6,7 @@
 #ifndef STATICFILECONTROLLER_H
 #define STATICFILECONTROLLER_H
 
+#include "Global"
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httprequesthandler.h"
@@ -39,7 +40,7 @@
   received a related HTTP request.
 */
 
-class StaticFileController : public HttpRequestHandler  {
+class QWEBSERVER_EXPORT StaticFileController : public HttpRequestHandler  {
     Q_OBJECT
     Q_DISABLE_COPY(StaticFileController);
 public:

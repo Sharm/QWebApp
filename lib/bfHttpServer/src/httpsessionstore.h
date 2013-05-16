@@ -6,6 +6,7 @@
 #ifndef HTTPSESSIONSTORE_H
 #define HTTPSESSIONSTORE_H
 
+#include "Global"
 #include <QObject>
 #include <QMap>
 #include <QTimer>
@@ -29,7 +30,7 @@
   </pre></code>
 */
 
-class HttpSessionStore : public QObject {
+class QWEBSERVER_EXPORT HttpSessionStore : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(HttpSessionStore)
 public:

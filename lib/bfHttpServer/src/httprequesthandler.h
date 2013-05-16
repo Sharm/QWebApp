@@ -6,6 +6,7 @@
 #ifndef HTTPREQUESTHANDLER_H
 #define HTTPREQUESTHANDLER_H
 
+#include "Global"
 #include "httprequest.h"
 #include "httpresponse.h"
 
@@ -21,7 +22,7 @@
    @see StaticFileController which delivers static local files.
 */
 
-class HttpRequestHandler : public QObject {
+class QWEBSERVER_EXPORT HttpRequestHandler : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(HttpRequestHandler)
 public:

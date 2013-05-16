@@ -1,6 +1,7 @@
 #ifndef TEMPLATECACHE_H
 #define TEMPLATECACHE_H
 
+#include "Global"
 #include "templateloader.h"
 #include <QCache>
 
@@ -38,7 +39,7 @@
   @see TemplateLoader
 */
 
-class TemplateCache : public TemplateLoader {
+class QWEBSERVER_EXPORT TemplateCache : public TemplateLoader {
     Q_OBJECT
     Q_DISABLE_COPY(TemplateCache);
 public:

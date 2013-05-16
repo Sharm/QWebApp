@@ -6,6 +6,7 @@
 #ifndef HTTPREQUEST_H
 #define HTTPREQUEST_H
 
+#include "Global"
 #include <QByteArray>
 #include <QTcpSocket>
 #include <QMap>
@@ -31,7 +32,7 @@
   The body is always a little larger than the file itself.
 */
 
-class HttpRequest {
+class QWEBSERVER_EXPORT HttpRequest {
     Q_DISABLE_COPY(HttpRequest)
     friend class HttpSessionStore;
 public:

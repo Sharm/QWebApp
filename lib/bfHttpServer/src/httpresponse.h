@@ -6,6 +6,7 @@
 #ifndef HTTPRESPONSE_H
 #define HTTPRESPONSE_H
 
+#include "Global"
 #include <QMap>
 #include <QString>
 #include <QTcpSocket>
@@ -33,7 +34,7 @@
   a progress bar.
 */
 
-class HttpResponse {
+class QWEBSERVER_EXPORT HttpResponse {
     Q_DISABLE_COPY(HttpResponse)
 public:
 

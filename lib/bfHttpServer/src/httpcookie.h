@@ -6,6 +6,7 @@
 #ifndef HTTPCOOKIE_H
 #define HTTPCOOKIE_H
 
+#include "Global"
 #include <QList>
 #include <QByteArray>
 
@@ -15,7 +16,7 @@
   2109.
 */
 
-class HttpCookie
+class QWEBSERVER_EXPORT HttpCookie
 {
 public:
 

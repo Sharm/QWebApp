@@ -6,6 +6,7 @@
 #ifndef LISTENER_H
 #define LISTENER_H
 
+#include "Global"
 #include <QTcpServer>
 #include <QSettings>
 #include <QBasicTimer>
@@ -33,7 +34,7 @@
   @see HttpRequest for description of config settings maxRequestSize and maxMultiPartSize
 */
 
-class HttpListener : public QTcpServer {
+class QWEBSERVER_EXPORT HttpListener : public QTcpServer {
     Q_OBJECT
     Q_DISABLE_COPY(HttpListener)
 public:

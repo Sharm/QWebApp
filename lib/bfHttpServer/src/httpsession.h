@@ -6,6 +6,7 @@
 #ifndef HTTPSESSION_H
 #define HTTPSESSION_H
 
+#include "Global"
 #include <QByteArray>
 #include <QVariant>
 #include <QReadWriteLock>
@@ -18,7 +19,7 @@
   @see HttpSessionStore should be used to create and get instances of this class.
 */
 
-class HttpSession {
+class QWEBSERVER_EXPORT HttpSession {
 
 public:
 

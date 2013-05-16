@@ -6,6 +6,7 @@
 #ifndef TEMPLATELOADER_H
 #define TEMPLATELOADER_H
 
+#include "Global"
 #include <QString>
 #include <QSettings>
 #include <QTextCodec>
@@ -34,7 +35,7 @@
   @see TemplateCache
 */
 
-class TemplateLoader : public QObject {
+class QWEBSERVER_EXPORT TemplateLoader : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(TemplateLoader);
 public:
