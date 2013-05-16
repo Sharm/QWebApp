@@ -10,10 +10,11 @@ HttpConnectionHandlerPool::HttpConnectionHandlerPool(QSettings* settings, HttpRe
     connect(&cleanupTimer, SIGNAL(timeout()), SLOT(cleanup()));
 }
 
-
 HttpConnectionHandlerPool::~HttpConnectionHandlerPool() {
     // delete all connection handlers and wait until their threads are closed
     foreach(HttpConnectionHandler* handler, pool) {
+        handler->quit();
+        handler->wait();
         delete handler;
     }
     qDebug("HttpConnectionHandlerPool (%p): destroyed", this);

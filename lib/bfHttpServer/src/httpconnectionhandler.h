@@ -56,10 +56,10 @@ private:
     QSettings* settings;
 
     /** TCP socket of the current connection */
-    QTcpSocket socket;
+    QTcpSocket *socket;
 
     /** Time for read timeout detection */
-    QTimer readTimer;
+    QTimer *readTimer;
 
     /** Storage for the current incoming HTTP request */
     HttpRequest* currentRequest;
