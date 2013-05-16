@@ -24,7 +24,8 @@ QString TemplateCache::tryFile(QString localizedName) {
     entry->created=now;
     entry->document=TemplateLoader::tryFile(localizedName);
     // Store in cache even when the file did not exist, to remember that there is no such file
-    cache.insert(localizedName,entry,entry->document.size());
+    if (cacheTimeout != 0)
+        cache.insert(localizedName,entry,entry->document.size());
     return entry->document;
 }
 
