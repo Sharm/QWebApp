@@ -90,6 +90,8 @@
 class QWEBSERVER_EXPORT Template : public QString {
 public:
 
+    Template();
+
     /**
       Constructor that reads the template from a string.
       @param source The template source text

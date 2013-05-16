@@ -6,6 +6,8 @@
 #include "template.h"
 #include <QFileInfo>
 
+Template::Template(): QString(){}
+
 Template::Template(QString source, QString sourceName)
     : QString(source) {
     this->sourceName=sourceName;
