@@ -1,0 +1,15 @@
+*.user
+*.patch
+*.orig
+*.vcproj
+*.vcxproj*
+*.idb
+*.pdb
+*.sdf
+*.suo
+ui_*.h
+/build
+GeneratedFiles/*
+debug
+release
+Makefile*

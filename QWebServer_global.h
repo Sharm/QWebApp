@@ -1,0 +1,12 @@
+#ifndef QWEBSERVER_GLOBAL_H
+#define QWEBSERVER_GLOBAL_H
+
+#include <QtCore/QtGlobal>
+
+#ifdef QWEBSERVER_SHARED
+#  define QWEBSERVER_EXPORT Q_DECL_EXPORT
+#else
+#  define QWEBSERVER_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // QWEBSERVER_GLOBAL_H
