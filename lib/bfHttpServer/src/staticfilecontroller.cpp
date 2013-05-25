@@ -125,5 +125,8 @@ void StaticFileController::setContentType(QString fileName, HttpResponse& respon
     else if (fileName.endsWith(".js")) {
         response.setHeader("Content-Type", "text/javascript");
     }
+    else if (fileName.endsWith(".exe")) {
+        response.setHeader("Content-Type", "application/exe");
+    }
     // Todo: add all of your content types
 }
