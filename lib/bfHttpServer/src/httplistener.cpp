@@ -34,7 +34,7 @@ HttpListener::~HttpListener() {
 }
 
 
-void HttpListener::incomingConnection(int socketDescriptor) {
+void HttpListener::incomingConnection(qintptr socketDescriptor) {
 #ifdef SUPERVERBOSE
     qDebug("HttpListener: New connection");
 #endif

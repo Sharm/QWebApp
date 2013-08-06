@@ -52,7 +52,7 @@ public:
 protected:
 
     /** Serves new incoming connection requests */
-    void incomingConnection(int socketDescriptor);
+    void incomingConnection(qintptr socketDescriptor);
 
 private:
 
