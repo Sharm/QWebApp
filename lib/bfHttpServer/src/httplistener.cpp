@@ -7,6 +7,7 @@
 #include "httpconnectionhandler.h"
 #include "httpconnectionhandlerpool.h"
 #include <QCoreApplication>
+#include <QNetworkProxy>
 
 HttpListener::HttpListener(QSettings* settings, HttpRequestHandler* requestHandler, QObject *parent)
     : QTcpServer(parent)
@@ -17,6 +18,7 @@ HttpListener::HttpListener(QSettings* settings, HttpRequestHandler* requestHandl
     pool=new HttpConnectionHandlerPool(settings,requestHandler);
     // Start listening
     int port=settings->value("port").toInt();
+    setProxy(QNetworkProxy(QNetworkProxy::NoProxy));
     listen(QHostAddress::Any, port);
     if (!isListening()) {
         qCritical("HttpListener: Cannot bind on port %i: %s",port,qPrintable(errorString()));
