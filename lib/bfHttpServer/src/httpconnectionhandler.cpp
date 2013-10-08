@@ -50,7 +50,7 @@ void HttpConnectionHandler::run() {
 }
 
 
-void HttpConnectionHandler::handleConnection(int socketDescriptor) {
+void HttpConnectionHandler::handleConnection(tSocketDescriptor socketDescriptor) {
     qDebug("HttpConnectionHandler (%p): handle new connection", this);
     busy = true;
     Q_ASSERT(socket.isOpen()==false); // if not, then the handler is already busy
@@ -132,7 +132,7 @@ void HttpConnectionHandler::read() {
     }
 
     // If the request is complete, let the request mapper dispatch it
-    if (currentRequest && currentRequest->getStatus()==HttpRequest::complete) {
+    if (currentRequest->getStatus()==HttpRequest::complete) {
         readTimer.stop();
         qDebug("HttpConnectionHandler (%p): received request",this);
         HttpResponse response(&socket);
@@ -148,7 +148,7 @@ void HttpConnectionHandler::read() {
             response.write(QByteArray(),true);
         }
         // Close the connection after delivering the response, if requested
-        if (!currentRequest || QString::compare(currentRequest->getHeader("Connection"),"close",Qt::CaseInsensitive)==0) {
+        if (QString::compare(currentRequest->getHeader("Connection"),"close",Qt::CaseInsensitive)==0) {
             socket.disconnectFromHost();
         }
         else {
