@@ -53,7 +53,7 @@ public:
 protected:
 
     /** Serves new incoming connection requests */
-    void incomingConnection(int socketDescriptor);
+    void incomingConnection(tSocketDescriptor socketDescriptor);
 
 private:
 
@@ -69,7 +69,8 @@ signals:
       Emitted when the connection handler shall process a new incoming onnection.
       @param socketDescriptor references the accepted connection.
     */
-    void handleConnection(int socketDescriptor);
+
+    void handleConnection(tSocketDescriptor socketDescriptor);
 
 };
 

@@ -12,6 +12,8 @@ HttpListener::HttpListener(QSettings* settings, HttpRequestHandler* requestHandl
     : QTcpServer(parent)
 {
     Q_ASSERT(settings!=0);
+    // Reqister type of socketDescriptor for signal/slot handling
+    qRegisterMetaType<tSocketDescriptor>("tSocketDescriptor");
     // Create connection handler pool
     this->settings=settings;
     pool=new HttpConnectionHandlerPool(settings,requestHandler);
@@ -33,8 +35,7 @@ HttpListener::~HttpListener() {
     qDebug("HttpListener: destroyed");
 }
 
-
-void HttpListener::incomingConnection(int socketDescriptor) {
+void HttpListener::incomingConnection(tSocketDescriptor socketDescriptor) {
 #ifdef SUPERVERBOSE
     qDebug("HttpListener: New connection");
 #endif
@@ -44,9 +45,9 @@ void HttpListener::incomingConnection(int socketDescriptor) {
     if (freeHandler) {
         // The descriptor is passed via signal/slot because the handler lives in another
         // thread and cannot open the socket when called by another thread.
-        connect(this,SIGNAL(handleConnection(int)),freeHandler,SLOT(handleConnection(int)));
+        connect(this,SIGNAL(handleConnection(tSocketDescriptor)),freeHandler,SLOT(handleConnection(tSocketDescriptor)));
         emit handleConnection(socketDescriptor);
-        disconnect(this,SIGNAL(handleConnection(int)),freeHandler,SLOT(handleConnection(int)));
+        disconnect(this,SIGNAL(handleConnection(tSocketDescriptor)),freeHandler,SLOT(handleConnection(tSocketDescriptor)));
     }
     else {
         // Reject the connection

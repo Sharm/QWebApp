@@ -55,6 +55,8 @@ win32 {
     OUTINCLUDE = ..\\include
     headercopy.commands += cd $$PWD $$escape_expand(\\n)
 
+    headercopy.commands += if not exist $$OUTINCLUDE\\$$RELEASE_TARGET mkdir $$OUTINCLUDE\\$$RELEASE_TARGET $$escape_expand(\\n)
+
     for(header, HEADERS) {
         header ~= s,/,\\,g
         headercopy.commands += xcopy $$header $$OUTINCLUDE\\$$RELEASE_TARGET /y $$escape_expand(\\n)
