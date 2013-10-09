@@ -57,7 +57,10 @@ void Startup::start() {
     listenerSettings->beginGroup("listener");
     listener=new HttpListener(listenerSettings,new RequestMapper(app),app);
 
-    qDebug("ServiceHelper: Service has started");
+    if (logSettings->value("bufferSize",0).toInt()>0 && logSettings->value("minLevel",0).toInt()>0) {
+        qDebug("You see these debug messages because the logging buffer is enabled");
+    }
+    qWarning("ServiceHelper: Service has started");
 }
 
 void Startup::stop() {
