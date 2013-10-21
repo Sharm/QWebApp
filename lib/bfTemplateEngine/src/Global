@@ -1,1 +1,5 @@
-#include "../../../QWebServer_global.h"
+#ifdef QWEBSERVER_SHARED
+    #include "../../../QWebServer_global.h"
+#else
+    #include "QWebServer_global.h"
+#endif

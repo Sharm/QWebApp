@@ -1,3 +1,7 @@
+###########################
+###     CONFIG SETUP    ###
+###########################
+
 TEMPLATE = lib
 DEFINES += QWEBSERVER_SHARED
 
@@ -5,7 +9,6 @@ DEBUG_TARGET = QWebServerd
 RELEASE_TARGET = QWebServer
 
 QT = core network
-
 
 ###########################
 ###    LINK DEP LIBS    ###
@@ -39,7 +42,8 @@ DLLDESTDIR = $$OUTDIR/../bin/FlipBox
 
 # SOURCES += *.cpp
 
-HEADERS += *.h
+HEADERS += $$PWD/QWebServer_global.h \
+    $$PWD/Global
 
 include(lib/bfLogging/src/bfLogging.pri)
 include(lib/bfHttpServer/src/bfHttpServer.pri)
@@ -51,19 +55,22 @@ include(lib/bfTemplateEngine/src/bfTemplateEngine.pri)
 ###       INSTALL       ###
 ###########################
 
-win32 {
-    OUTINCLUDE = ..\\include
-    headercopy.commands += cd $$PWD $$escape_expand(\\n)
+OUTINCLUDE = $$PWD/../include
 
-    headercopy.commands += if not exist $$OUTINCLUDE\\$$RELEASE_TARGET mkdir $$OUTINCLUDE\\$$RELEASE_TARGET $$escape_expand(\\n)
+win32 {
+    OUTINCLUDE ~= s,/,\\,g
+    QMAKE_POST_LINK += $$quote(if not exist $$OUTINCLUDE\\$$RELEASE_TARGET mkdir $$OUTINCLUDE\\$$RELEASE_TARGET$$escape_expand(\\n))
 
     for(header, HEADERS) {
         header ~= s,/,\\,g
-        headercopy.commands += xcopy $$header $$OUTINCLUDE\\$$RELEASE_TARGET /y $$escape_expand(\\n)
+        QMAKE_POST_LINK += $$quote(xcopy $$header $$OUTINCLUDE\\$$RELEASE_TARGET /y$$escape_expand(\\n))
     }
-
-    QMAKE_EXTRA_TARGETS += headercopy
-    POST_TARGETDEPS += headercopy
 }
 
+unix {
+    QMAKE_POST_LINK += $$quote(mkdir -p $$OUTINCLUDE/$$RELEASE_TARGET$$escape_expand(\\n\\t))
 
+    for(header, HEADERS) {
+       QMAKE_POST_LINK += $$quote(cp -u $$header $$OUTINCLUDE/$$RELEASE_TARGET$$escape_expand(\\n\\t))
+    }
+}
