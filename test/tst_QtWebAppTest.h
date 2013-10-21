@@ -60,10 +60,9 @@ private Q_SLOTS:
     {
         MyRequestHandler *handler = new MyRequestHandler(this);
         QSignalSpy wasHit(handler, SIGNAL(serviceWasHit()));
-        HttpListener *listener = new HttpListener(mSettings, handler);
+        new HttpListener(mSettings, handler);
         mQnam.get(QNetworkRequest(getBaseUrl().append("/foo")));
         QTRY_VERIFY(wasHit.count());
-        listener->deleteLater();
         handler->deleteLater();
     }
 };

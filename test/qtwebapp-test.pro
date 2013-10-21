@@ -28,10 +28,10 @@ OTHER_FILES += \
 
 # QtWQebApp lib
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../lib/QWebServer/ -lQWebServerd
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../lib/QWebServer/ -lQWebServerdd
-else:unix: LIBS += -L$$PWD/../lib/QWebServer/ -lQWebServerd
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../lib/QWebServer/ -lQWebServerd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/QWebServer/ -lQWebServerd
+else:unix: LIBS += -L$$PWD/../../lib/QWebServer/ -lQWebServerd
 
-INCLUDEPATH += $$PWD/../include/QWebServer
-DEPENDPATH += $$PWD/../include/QWebServer
+INCLUDEPATH += $$PWD/../../include/QWebServer
+DEPENDPATH += $$PWD/../../include/QWebServer
 
