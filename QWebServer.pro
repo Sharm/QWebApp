@@ -59,11 +59,11 @@ OUTINCLUDE = $$PWD/../include
 
 win32 {
     OUTINCLUDE ~= s,/,\\,g
-    QMAKE_POST_LINK += $$quote(if not exist $$OUTINCLUDE\\$$RELEASE_TARGET mkdir $$OUTINCLUDE\\$$RELEASE_TARGET)
+    QMAKE_POST_LINK += $$quote(if not exist $$OUTINCLUDE\\$$RELEASE_TARGET mkdir $$OUTINCLUDE\\$$RELEASE_TARGET$$escape_expand(\\n))
 
     for(header, HEADERS) {
         header ~= s,/,\\,g
-        QMAKE_POST_LINK += $$quote(xcopy $$header $$OUTINCLUDE\\$$RELEASE_TARGET /y)
+        QMAKE_POST_LINK += $$quote(xcopy $$header $$OUTINCLUDE\\$$RELEASE_TARGET /y$$escape_expand(\\n))
     }
 }
 
